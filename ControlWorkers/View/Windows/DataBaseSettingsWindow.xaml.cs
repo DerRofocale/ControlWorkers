@@ -15,22 +15,34 @@ using System.Windows.Shapes;
 namespace ControlWorkers.View.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для RegisterWindow.xaml
+    /// Логика взаимодействия для DataBaseSettingsWindow.xaml
     /// </summary>
-    public partial class RegisterWindow : Window
+    public partial class DataBaseSettingsWindow : Window
     {
-        public RegisterWindow()
+        public DataBaseSettingsWindow()
         {
             InitializeComponent();
         }
+
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
         {
             base.OnMouseLeftButtonDown(e);
             DragMove();
         }
-        private void closeWindow(object sender, RoutedEventArgs e)
+
+        private void exitApp(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void validateNullTxt(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void validateNullPsw(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

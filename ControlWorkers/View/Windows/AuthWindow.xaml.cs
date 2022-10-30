@@ -84,6 +84,7 @@ namespace ControlWorkers.View.Windows
         {
             RegisterWindow registerWindow = new RegisterWindow();
             this.Visibility = Visibility.Hidden;
+            registerWindow.Owner = this;
             registerWindow.ShowDialog();
             this.Visibility = Visibility.Visible;
         }
@@ -91,10 +92,19 @@ namespace ControlWorkers.View.Windows
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 #if DEBUG
-            MainWindow mainWindow = new MainWindow();
-            Close();
-            mainWindow.ShowDialog();
+            //MainWindow mainWindow = new MainWindow();
+            //Close();
+            //mainWindow.ShowDialog();
 #endif
+        }
+
+        private void openDBSettingsWindow(object sender, RoutedEventArgs e)
+        {
+            DataBaseSettingsWindow dataBaseSettingsWindow = new DataBaseSettingsWindow();
+            dataBaseSettingsWindow.Owner = this;
+            this.Visibility = Visibility.Hidden;
+            dataBaseSettingsWindow.ShowDialog();
+            this.Visibility = Visibility.Visible;
         }
     }
 }

@@ -11,7 +11,7 @@
         AllowsTransparency="True"
         WindowStyle="None"
         ResizeMode="NoResize"
-        WindowStartupLocation="CenterScreen"
+        WindowStartupLocation="CenterOwner"
         Background="{x:Null}"
         Height="450" Width="750">
     <materialDesign:Card
