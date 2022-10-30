@@ -69,15 +69,6 @@
                             <!--  ПЕРВЫЙ ТАБ  -->
                             <StackPanel Margin="16">
                                 <StackPanel VerticalAlignment="Center">
-                                    <Button
-                                        Width="128"
-                                        Command="{Binding RunDialogCommand}"
-                                        Content="RUN CODE" />
-                                    <Button
-                                        Width="128"
-                                        Margin="0,32,0,0"
-                                        Command="{Binding RunExtendedDialogCommand}"
-                                        Content="EXTENDED" />
 
                                 </StackPanel>
                             </StackPanel>
