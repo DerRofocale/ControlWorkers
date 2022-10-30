@@ -20,24 +20,28 @@
         materialDesign:ShadowAssist.ShadowDepth="Depth4"
         Margin="25">
         <Grid>
-            
-            <Button Style="{StaticResource MaterialDesignPaperButton}" 
-                    Click="closeWindow"
-                    materialDesign:ButtonAssist.CornerRadius="5"
-                    Width="25"
-                    Padding="3"
-                    Height="25"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Top"
-                    Margin="0 20 20 0"
-                    ToolTip="Закрыть окно"
-                    Cursor="Hand">
-                <materialDesign:PackIcon Kind="Close"/>
-            </Button>
-            <Viewbox Height="150"
-                        Width="150" Margin="0 0 0 15">
-                <Image Source="{StaticResource workerDrawingImage}"/>
-            </Viewbox>
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Viewbox Height="150"
+                            Width="150">
+                    <Image Source="{StaticResource workerDrawingImage}"/>
+                </Viewbox>
+                <TextBlock Margin="0 25 0 5"
+                           HorizontalAlignment="Center"
+                           FontSize="28"
+                           FontWeight="Bold"
+                           Text="На стадии разработки"/>
+                <Button Margin="0 20 0 0"
+                        x:Name="loginBtn"
+                        Style="{StaticResource MaterialDesignFlatMidBgButton}" 
+                        materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                        Height="53" 
+                        Width="300"
+                        materialDesign:ButtonAssist.CornerRadius="10"
+                        FontSize="18"
+                        Click="closeWindow"
+                        Cursor="Hand"
+                        Content="ЗАКРЫТЬ"/>
+            </StackPanel>
         </Grid>
     </materialDesign:Card>
 </Window>

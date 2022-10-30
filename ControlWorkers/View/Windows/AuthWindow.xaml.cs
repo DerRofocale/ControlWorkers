@@ -23,6 +23,7 @@ namespace ControlWorkers.View.Windows
         public AuthWindow()
         {
             InitializeComponent();
+
         }
 
 
@@ -68,13 +69,32 @@ namespace ControlWorkers.View.Windows
         {
             if (txtPassword.Password == "11032003" && txtUsername.Text == "Dmitry") 
             {
-                MessageBox.Show("Ура!");
+                MainWindow mainWindow = new MainWindow();
+                Close();
+                mainWindow.ShowDialog();
             }
             else
             {
                 txtUsername.BorderBrush = new SolidColorBrush(Colors.Red);
                 txtPassword.BorderBrush = new SolidColorBrush(Colors.Red);
             }
+        }
+
+        private void GoToRegisterWindowBTN(object sender, RoutedEventArgs e)
+        {
+            RegisterWindow registerWindow = new RegisterWindow();
+            this.Visibility = Visibility.Hidden;
+            registerWindow.ShowDialog();
+            this.Visibility = Visibility.Visible;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+#if DEBUG
+            MainWindow mainWindow = new MainWindow();
+            Close();
+            mainWindow.ShowDialog();
+#endif
         }
     }
 }
