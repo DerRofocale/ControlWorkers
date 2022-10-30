@@ -49,9 +49,14 @@
                             Margin="0 30 0 15"/>
                 <ProgressBar x:Name="progressBar" Value="0" IsIndeterminate="True"/>
             </StackPanel>
-            <StackPanel Grid.Column="1" Margin="0 15 15 0" HorizontalAlignment="Right" VerticalAlignment="Top" >
-                <Viewbox Width="150" Stretch="Uniform">
+            <StackPanel Grid.Column="1" Margin="0 50 50 0" HorizontalAlignment="Right" VerticalAlignment="Top" >
+                <Viewbox Width="150" Height="150" Stretch="Uniform">
                     <Image Source="{StaticResource logoEETKDrawingImage}"/>
+                </Viewbox>
+            </StackPanel>
+            <StackPanel Grid.Column="0" Margin="60 60 0 0" HorizontalAlignment="Left" VerticalAlignment="Top" >
+                <Viewbox Height="130" Width="130" Stretch="Uniform">
+                    <Image Source="{StaticResource logoDerRofocaleDrawingImage}"/>
                 </Viewbox>
             </StackPanel>
         </Grid>

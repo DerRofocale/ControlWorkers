@@ -5,11 +5,16 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>iconh.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Assets\logo.png" />
     <None Remove="Assets\logoeetk.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="iconh.ico" />
   </ItemGroup>
 
   <ItemGroup>

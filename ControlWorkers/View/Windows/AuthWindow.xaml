@@ -19,23 +19,12 @@
                          materialDesign:ShadowAssist.ShadowDepth="Depth4">
         <materialDesign:DialogHost CloseOnClickAway="True" x:Name="DialogHost">
             <StackPanel >
-                <materialDesign:PopupBox HorizontalAlignment="Right"
-                                         Margin="0 20 20 0" 
-                                         PlacementMode="BottomAndAlignRightEdges" 
-                                         StaysOpen="False"
-                                         Cursor="Hand"
-                                         Height="25">
-                    <StackPanel
-                                HorizontalAlignment="Center">
-                        <Button ToolTip="Having Trouble Loggin in?"
-                                Margin="0 0 0 0"
-                                Content="Help Me"/>
-                        <Button x:Name="btn_exit"
-                                ToolTip="Close App"
-                                Content="Exit App"
-                                Click="exitApp"/>
-                    </StackPanel>
-                </materialDesign:PopupBox>
+                <Button Style="{StaticResource MaterialDesignFlatButton}" 
+                        Click="exitApp"
+                        materialDesign:ButtonAssist.CornerRadius="5" Width="25" Padding="3" Height="25" HorizontalAlignment="Right" Margin="0 20 20 0"
+                        ToolTip="Закрыть приложение" Cursor="Hand">
+                    <materialDesign:PackIcon Kind="Close"/>
+                </Button>
                 <Viewbox Height="100" Margin="0 60 0 5" Stretch="Uniform">
                     <Image Source="{StaticResource workerDrawingImage}"/>
                 </Viewbox>
