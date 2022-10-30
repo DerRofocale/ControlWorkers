@@ -11,11 +11,12 @@
     Height="760"
     AllowsTransparency="True"
     Background="{x:Null}"
+    Loaded="Window_Loaded"
     ResizeMode="NoResize"
     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
     WindowStartupLocation="CenterScreen"
     WindowStyle="None"
-    mc:Ignorable="d" Loaded="Window_Loaded">
+    mc:Ignorable="d">
     <materialDesign:Card
         Margin="25"
         materialDesign:ShadowAssist.ShadowDepth="Depth4"

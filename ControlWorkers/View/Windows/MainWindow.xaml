@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:ControlWorkers"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="MainWindow"
+    Title="Управление персоналом"
     Width="960"
     Height="540"
     MinWidth="960"
@@ -31,7 +31,22 @@
                 </Grid.RowDefinitions>
 
                 <Border Background="#FF029FEE">
-                    <ToggleButton x:Name="abob" />
+                    <StackPanel
+                        Margin="15,0,15,0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Orientation="Horizontal">
+                        <TextBlock
+                            FontSize="17"
+                            FontWeight="SemiBold"
+                            Foreground="White"
+                            Text="Здравствуйте, " />
+                        <TextBlock
+                            FontSize="17"
+                            FontWeight="SemiBold"
+                            Foreground="White"
+                            Text="Дмитрий Иванович!" />
+                    </StackPanel>
                 </Border>
                 <materialDesign:Card Grid.Row="1">
                     <TabControl
@@ -47,8 +62,8 @@
                                         Width="24"
                                         Height="24"
                                         HorizontalAlignment="Center"
-                                        Kind="Folder" />
-                                    <TextBlock HorizontalAlignment="Center" Text="All Files" />
+                                        Kind="ChartArc" />
+                                    <TextBlock HorizontalAlignment="Center" Text="Статус" />
                                 </StackPanel>
                             </TabItem.Header>
                             <!--  ПЕРВЫЙ ТАБ  -->
@@ -74,8 +89,8 @@
                                         Width="24"
                                         Height="24"
                                         HorizontalAlignment="Center"
-                                        Kind="ClockOutline" />
-                                    <TextBlock HorizontalAlignment="Center" Text="Recent" />
+                                        Kind="AccountGroup" />
+                                    <TextBlock HorizontalAlignment="Center" Text="Перс." />
                                 </StackPanel>
                             </TabItem.Header>
                             <!--  ВТОРОЙ ТАБ  -->
@@ -88,8 +103,8 @@
                                         Width="24"
                                         Height="24"
                                         HorizontalAlignment="Center"
-                                        Kind="Images" />
-                                    <TextBlock HorizontalAlignment="Center" Text="Photos" />
+                                        Kind="ArchiveEye" />
+                                    <TextBlock HorizontalAlignment="Center" Text="Входы" />
                                 </StackPanel>
                             </TabItem.Header>
                             <!--  ТРЕТИЙ ТАБ  -->
@@ -102,28 +117,15 @@
                                         Width="24"
                                         Height="24"
                                         HorizontalAlignment="Center"
-                                        Kind="MusicBoxMultiple" />
-                                    <TextBlock HorizontalAlignment="Center" Text="Sounds" />
+                                        Kind="Information" />
+                                    <TextBlock HorizontalAlignment="Center" Text="Инфо" />
                                 </StackPanel>
                             </TabItem.Header>
-                            <StackPanel Margin="16">
-                                <TextBlock
-                                    Margin="0,0,0,8"
-                                    Style="{StaticResource MaterialDesignHeadline5TextBlock}"
-                                    Text="Sounds" />
-                                <TextBlock>
-                                    <Run Text="tab 4 content. Default look and behaviors." />
-                                    <LineBreak />
-                                    <LineBreak />
-                                    <Run FontStyle="Italic">
-                                        Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...
-                                    </Run>
-                                </TextBlock>
-                            </StackPanel>
+                            <Frame Source="pack://application:,,,/View/Pages/ThanksPage.xaml" />
                         </TabItem>
                     </TabControl>
                 </materialDesign:Card>
-                <Grid Grid.Row="2">
+                <!--<Grid Grid.Row="2">
                     <materialDesign:DialogHost
                         CloseOnClickAway="True"
                         Identifier="RootDialog"
@@ -161,7 +163,7 @@
                             </Grid>
                         </materialDesign:DialogHost.DialogContent>
                     </materialDesign:DialogHost>
-                </Grid>
+                </Grid>-->
             </Grid>
         </materialDesign:Card>
     </Grid>
