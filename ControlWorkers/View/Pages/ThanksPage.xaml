@@ -30,11 +30,11 @@
                         <TextBlock HorizontalAlignment="Center" Text="Инфо" />
                     </StackPanel>
                 </TabItem.Header>
-                <!--  ВТОРОЙ ТАБ  -->
                 <StackPanel Margin="16">
                     <StackPanel Orientation="Vertical" />
                 </StackPanel>
             </TabItem>
+            <!--  ВТОРОЙ ТАБ  -->
             <TabItem>
                 <TabItem.Header>
                     <StackPanel Width="auto" Height="auto">
@@ -46,11 +46,26 @@
                         <TextBlock HorizontalAlignment="Center" Text="FAQ" />
                     </StackPanel>
                 </TabItem.Header>
-                <!--  ТРЕТИЙ ТАБ  -->
                 <StackPanel Margin="16">
-                    <StackPanel Orientation="Vertical" />
+                    <materialDesign:Card>
+                        <StackPanel>
+                            <Expander HorizontalAlignment="Stretch" Header="Первый экспандер">
+                                <StackPanel
+                                    Margin="24,8,24,16"
+                                    Orientation="Vertical"
+                                    TextBlock.Foreground="{DynamicResource MaterialDesignBody}">
+                                    <TextBlock Text="Your Content" />
+                                    <TextBlock Text="Строка 1" TextWrapping="WrapWithOverflow" />
+                                    <TextBlock Text="Строка 2" TextWrapping="WrapWithOverflow" />
+                                    <TextBlock Text="Строка 3" TextWrapping="WrapWithOverflow" />
+                                </StackPanel>
+                            </Expander>
+
+                        </StackPanel>
+                    </materialDesign:Card>
                 </StackPanel>
             </TabItem>
+            <!--  ТРЕТИЙ ТАБ  -->
             <TabItem>
                 <TabItem.Header>
                     <StackPanel Width="auto" Height="auto">

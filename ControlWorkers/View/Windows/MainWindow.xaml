@@ -37,12 +37,12 @@
                         VerticalAlignment="Center"
                         Orientation="Horizontal">
                         <TextBlock
-                            FontSize="17"
+                            FontSize="15"
                             FontWeight="SemiBold"
                             Foreground="White"
                             Text="Здравствуйте, " />
                         <TextBlock
-                            FontSize="17"
+                            FontSize="15"
                             FontWeight="SemiBold"
                             Foreground="White"
                             Text="Дмитрий Иванович!" />
