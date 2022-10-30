@@ -35,5 +35,46 @@ namespace ControlWorkers.View.Windows
             base.OnMouseLeftButtonDown(e);
             DragMove();
         }
+
+        private void validateNullTxt(object sender, TextChangedEventArgs e)
+        {
+            txtUsername.BorderBrush = new SolidColorBrush(Colors.LightGray);
+            txtPassword.BorderBrush = new SolidColorBrush(Colors.LightGray);
+            if (txtPassword.Password.Length != 0 && txtUsername.Text.Length != 0)
+            {
+                loginBtn.IsEnabled = true;
+            }
+            else
+            {
+                loginBtn.IsEnabled = false;
+            }
+        }
+
+        private void validateNullPsw(object sender, RoutedEventArgs e)
+        {
+            txtUsername.BorderBrush = new SolidColorBrush(Colors.LightGray);
+            txtPassword.BorderBrush = new SolidColorBrush(Colors.LightGray);
+            if (txtPassword.Password.Length != 0 && txtUsername.Text.Length != 0)
+            {
+                loginBtn.IsEnabled = true;
+            }
+            else
+            {
+                loginBtn.IsEnabled = false;
+            }
+        }
+
+        private void enterBtn(object sender, RoutedEventArgs e)
+        {
+            if (txtPassword.Password == "11032003" && txtUsername.Text == "Dmitry") 
+            {
+                MessageBox.Show("Ура!");
+            }
+            else
+            {
+                txtUsername.BorderBrush = new SolidColorBrush(Colors.Red);
+                txtPassword.BorderBrush = new SolidColorBrush(Colors.Red);
+            }
+        }
     }
 }

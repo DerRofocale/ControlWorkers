@@ -44,7 +44,8 @@
                          materialDesign:HintAssist.Hint="Введите логин"
                          BorderThickness="2" 
                          BorderBrush="{DynamicResource MaterialDesignDivider}"
-                         Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                         Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                         TextChanged="validateNullTxt"/>
                 <PasswordBox Margin="0 20 0 0"
                              x:Name="txtPassword"
                              Width="300"
@@ -52,7 +53,8 @@
                              materialDesign:HintAssist.Hint="Введите пароль"
                              BorderThickness="2"
                              BorderBrush="{DynamicResource MaterialDesignDivider}"
-                             Style="{StaticResource MaterialDesignOutlinedPasswordBox}"/>
+                             Style="{StaticResource MaterialDesignOutlinedPasswordBox}"
+                             PasswordChanged="validateNullPsw"/>
                 <Button Margin="0 20 0 0"
                         x:Name="loginBtn"
                         Style="{StaticResource MaterialDesignFlatMidBgButton}" 
@@ -61,7 +63,9 @@
                         Width="300"
                         materialDesign:ButtonAssist.CornerRadius="10"
                         FontSize="18"
+                        Click="enterBtn"
                         Cursor="Hand"
+                        IsEnabled="False"
                         Content="ВОЙТИ"/>
                 <Button Margin="0 20 0 0"
                         x:Name="signupBtn"
