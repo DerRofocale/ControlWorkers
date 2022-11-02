@@ -34,7 +34,7 @@
                 Margin="25,25,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
-                FontSize="28"
+                FontSize="32"
                 FontWeight="Bold"
                 Text="Ошибка" />
             <Button
