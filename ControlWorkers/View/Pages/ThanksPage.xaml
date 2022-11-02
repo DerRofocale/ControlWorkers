@@ -175,6 +175,45 @@
                                     </StackPanel>
                                 </Grid>
                             </materialDesign:Card>
+                            <materialDesign:Card
+                                Margin="20"
+                                materialDesign:ShadowAssist.ShadowDepth="Depth4"
+                                UniformCornerRadius="15">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1.5*" />
+                                        <ColumnDefinition Width="2*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Ellipse
+                                        Grid.Column="0"
+                                        Width="75"
+                                        Height="75"
+                                        Stroke="#FF029FEE"
+                                        StrokeThickness="2">
+                                        <Ellipse.Fill>
+                                            <ImageBrush ImageSource="{StaticResource workerDrawingImage}" Stretch="Uniform" />
+                                        </Ellipse.Fill>
+                                    </Ellipse>
+                                    <StackPanel
+                                        Grid.Column="1"
+                                        Margin="5,0,10,0"
+                                        VerticalAlignment="Center">
+                                        <TextBlock
+                                            Margin="0,0,0,10"
+                                            FontSize="18"
+                                            FontWeight="Bold"
+                                            Text="Шрамов Ш. Ш." />
+                                        <TextBlock
+                                            FontSize="14"
+                                            FontWeight="SemiBold"
+                                            Text="любовница" />
+                                        <TextBlock
+                                            FontSize="14"
+                                            FontWeight="SemiBold"
+                                            Text="Яльчика Д. И." />
+                                    </StackPanel>
+                                </Grid>
+                            </materialDesign:Card>
                         </WrapPanel>
                     </ScrollViewer>
                 </Grid>

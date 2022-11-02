@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ControlWorkers.Services;
 
 namespace ControlWorkers.View.Windows
 {
@@ -28,6 +29,17 @@ namespace ControlWorkers.View.Windows
 
         private void Window_ContentRendered(object sender, EventArgs e)
         {
+            // ПЕРВЫЙ ЗАПУСК
+            if (RegistryService.GetRegistryKeySettings("isNotFirstStart") != "1")
+            {
+                RegistryService.SetRegistryKeySettings("isNotFirstStart", "1");
+                RegistryService.SetRegistryKeySettings("DBHost", "localhost");
+                RegistryService.SetRegistryKeySettings("DBPort", "5432");
+                RegistryService.SetRegistryKeySettings("DBName", "testDiplom");
+                RegistryService.SetRegistryKeySettings("DBUser", "postgres");
+                RegistryService.SetRegistryKeySettings("DBPassword", "postgres");
+                
+            }
             BackgroundWorker worker = new BackgroundWorker();
             worker.WorkerReportsProgress = true;
             worker.DoWork += Worker_DoWork;

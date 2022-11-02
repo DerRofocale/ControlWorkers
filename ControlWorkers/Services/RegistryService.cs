@@ -11,7 +11,7 @@ namespace ControlWorkers.Services
     public class RegistryService
     {
         #region SETTINGS
-        private static readonly string registryPathSettings = Path.Combine(Registry.CurrentUser.Name, "SOFTWARE\\ControlWorkers");
+        private static readonly string registryPathSettings = Path.Combine(Registry.CurrentUser.Name, "SOFTWARE\\ControlWorkers\\Settings");
         public static string GetRegistryKeySettings(string key)
         {
             return (string)Registry.GetValue(registryPathSettings, key, string.Empty);

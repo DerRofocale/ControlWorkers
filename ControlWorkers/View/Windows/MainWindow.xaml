@@ -68,9 +68,7 @@
                             </TabItem.Header>
                             <!--  ПЕРВЫЙ ТАБ  -->
                             <StackPanel Margin="16">
-                                <StackPanel VerticalAlignment="Center">
-
-                                </StackPanel>
+                                <StackPanel VerticalAlignment="Center" />
                             </StackPanel>
                         </TabItem>
                         <TabItem>
