@@ -19,14 +19,15 @@ namespace ControlWorkers.View.Windows
     /// </summary>
     public partial class ErrorWindow : Window
     {
-        public ErrorWindow()
+        public ErrorWindow(string _msg)
         {
             InitializeComponent();
+            txtErrorMsg.Text = _msg;
         }
 
         private void closeWindow(object sender, RoutedEventArgs e)
         {
-
+            Close();
         }
     }
 }

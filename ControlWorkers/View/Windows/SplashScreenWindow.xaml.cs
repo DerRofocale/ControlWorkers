@@ -27,6 +27,7 @@ namespace ControlWorkers.View.Windows
             InitializeComponent();
         }
 
+        // КОГДА ОКНО ПРОРЕНДРИТСЯ
         private void Window_ContentRendered(object sender, EventArgs e)
         {
             // ПЕРВЫЙ ЗАПУСК
@@ -47,6 +48,7 @@ namespace ControlWorkers.View.Windows
             worker.RunWorkerAsync();
         }
 
+        // ИЗМЕНЕНИЕ ПРОГРЕССА
         private void Worker_ProgressChanged(object? sender, ProgressChangedEventArgs e)
         {
             progressBar.Value = e.ProgressPercentage;
@@ -58,6 +60,7 @@ namespace ControlWorkers.View.Windows
             }
         }
 
+        // РАБОТА ДЛЯ ПРОГРЕСС-БАРА
         private void Worker_DoWork(object? sender, DoWorkEventArgs e)
         {
 

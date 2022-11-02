@@ -22,29 +22,44 @@
         Background="{DynamicResource MaterialDesignPaper}"
         UniformCornerRadius="15">
         <Grid>
-            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Viewbox Width="100" Height="100">
-                    <Image Source="{StaticResource workerDrawingImage}" />
-                </Viewbox>
-                <TextBlock
-                    Margin="0,25,0,5"
-                    HorizontalAlignment="Center"
-                    FontSize="28"
-                    FontWeight="Bold"
-                    Text="На стадии разработки" />
-                <Button
-                    x:Name="loginBtn"
-                    Width="300"
-                    Height="53"
-                    Margin="0,20,0,0"
-                    materialDesign:ButtonAssist.CornerRadius="10"
-                    materialDesign:ShadowAssist.ShadowDepth="Depth0"
-                    Click="closeWindow"
-                    Content="ЗАКРЫТЬ"
-                    Cursor="Hand"
-                    FontSize="18"
-                    Style="{StaticResource MaterialDesignFlatMidBgButton}" />
-            </StackPanel>
+            <Viewbox
+                Width="70"
+                Height="70"
+                Margin="0,25,25,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top">
+                <Image Source="{StaticResource workerDrawingImage}" />
+            </Viewbox>
+            <TextBlock
+                Margin="25,25,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                FontSize="28"
+                FontWeight="Bold"
+                Text="Ошибка" />
+            <Button
+                x:Name="loginBtn"
+                Width="300"
+                Height="53"
+                Margin="0,0,0,25"
+                VerticalAlignment="Bottom"
+                materialDesign:ButtonAssist.CornerRadius="10"
+                materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                Click="closeWindow"
+                Content="ЗАКРЫТЬ"
+                Cursor="Hand"
+                FontSize="18"
+                Style="{StaticResource MaterialDesignFlatMidBgButton}" />
+            <TextBlock
+                x:Name="txtErrorMsg"
+                MaxWidth="450"
+                MaxHeight="200"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="17"
+                FontWeight="SemiBold"
+                TextAlignment="Justify"
+                TextWrapping="Wrap" />
         </Grid>
     </materialDesign:Card>
 </Window>
