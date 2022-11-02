@@ -53,11 +53,16 @@ namespace ControlWorkers.View.Windows
 
         private void validateNullTxt(object sender, TextChangedEventArgs e)
         {
-            if (_currentDBHost == txtHost.Text &&
+            if ((_currentDBHost == txtHost.Text &&
                 _currentDBPort == txtPort.Text &&
                 _currentDBName == txtDatabase.Text &&
                 _currentDBUser == txtUsername.Text &&
-                _currentDBPassword == txtPassword.Password)
+                _currentDBPassword == txtPassword.Password) ||
+                (txtHost.Text.Length == 0 ||
+                txtPort.Text.Length == 0 ||
+                txtDatabase.Text.Length == 0 ||
+                txtUsername.Text.Length == 0 ||
+                txtPassword.Password.Length == 0))
             {
                 saveBtn.IsEnabled = false;
             }
@@ -69,11 +74,16 @@ namespace ControlWorkers.View.Windows
 
         private void validateNullPsw(object sender, RoutedEventArgs e)
         {
-            if (_currentDBHost == txtHost.Text &&
+            if ((_currentDBHost == txtHost.Text &&
                 _currentDBPort == txtPort.Text &&
                 _currentDBName == txtDatabase.Text &&
                 _currentDBUser == txtUsername.Text &&
-                _currentDBPassword == txtPassword.Password)
+                _currentDBPassword == txtPassword.Password) ||
+                (txtHost.Text.Length == 0 ||
+                txtPort.Text.Length == 0 ||
+                txtDatabase.Text.Length == 0 ||
+                txtUsername.Text.Length == 0 ||
+                txtPassword.Password.Length == 0))
             {
                 saveBtn.IsEnabled = false;
             }
