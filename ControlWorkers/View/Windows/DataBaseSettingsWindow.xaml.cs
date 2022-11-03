@@ -95,6 +95,7 @@ namespace ControlWorkers.View.Windows
 
         private void SaveSettingsBtn(object sender, RoutedEventArgs e)
         {
+            var a = Convert.ToInt32(txtPort.Text);
             RegistryService.SetRegistryKeySettings("DBHost", txtHost.Text.ToString());
             RegistryService.SetRegistryKeySettings("DBPort", txtPort.Text.ToString());
             RegistryService.SetRegistryKeySettings("DBName", txtDatabase.Text.ToString());
