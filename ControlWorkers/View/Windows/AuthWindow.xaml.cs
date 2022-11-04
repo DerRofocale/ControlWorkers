@@ -23,7 +23,7 @@ namespace ControlWorkers.View.Windows
         public AuthWindow()
         {
             InitializeComponent();
-
+            txtUsername.Focus();
         }
 
 
@@ -67,7 +67,38 @@ namespace ControlWorkers.View.Windows
 
         private void enterBtn(object sender, RoutedEventArgs e)
         {
-            if (txtPassword.Password == "11032003" && txtUsername.Text == "Dmitry") 
+            Login();
+        }
+
+        private void GoToRegisterWindowBTN(object sender, RoutedEventArgs e)
+        {
+            RegisterWindow registerWindow = new RegisterWindow();
+            this.Visibility = Visibility.Hidden;
+            registerWindow.Owner = this;
+            registerWindow.ShowDialog();
+            this.Visibility = Visibility.Visible;
+        }
+
+        private void openDBSettingsWindow(object sender, RoutedEventArgs e)
+        {
+            DataBaseSettingsWindow dataBaseSettingsWindow = new DataBaseSettingsWindow();
+            dataBaseSettingsWindow.Owner = this;
+            this.Visibility = Visibility.Hidden;
+            dataBaseSettingsWindow.ShowDialog();
+            this.Visibility = Visibility.Visible;
+        }
+
+        private void GoToTheNextField(object sender, KeyEventArgs e)
+        {
+            if (txtUsername.Text.Length > 0 && e.Key == Key.Enter)
+            {
+                txtPassword.Focus();
+            }
+        }
+
+        private void Login()
+        {
+            if (txtPassword.Password == "11032003" && txtUsername.Text == "Dmitry")
             {
                 MainWindow mainWindow = new MainWindow();
                 Close();
@@ -80,31 +111,13 @@ namespace ControlWorkers.View.Windows
             }
         }
 
-        private void GoToRegisterWindowBTN(object sender, RoutedEventArgs e)
+        private void EnterLogin(object sender, KeyEventArgs e)
         {
-            RegisterWindow registerWindow = new RegisterWindow();
-            this.Visibility = Visibility.Hidden;
-            registerWindow.Owner = this;
-            registerWindow.ShowDialog();
-            this.Visibility = Visibility.Visible;
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-#if DEBUG
-            //MainWindow mainWindow = new MainWindow();
-            //Close();
-            //mainWindow.ShowDialog();
-#endif
-        }
-
-        private void openDBSettingsWindow(object sender, RoutedEventArgs e)
-        {
-            DataBaseSettingsWindow dataBaseSettingsWindow = new DataBaseSettingsWindow();
-            dataBaseSettingsWindow.Owner = this;
-            this.Visibility = Visibility.Hidden;
-            dataBaseSettingsWindow.ShowDialog();
-            this.Visibility = Visibility.Visible;
+            if (txtPassword.Password.Length > 0 && e.Key == Key.Enter)
+            {
+                Login();
+            }
+            
         }
     }
 }
