@@ -68,7 +68,8 @@
                             </TabItem.Header>
                             <!--  ПЕРВЫЙ ТАБ  -->
                             <StackPanel Margin="16">
-                                <StackPanel VerticalAlignment="Center" />
+                                <!--<StackPanel VerticalAlignment="Center" />-->
+
                             </StackPanel>
                         </TabItem>
                         <TabItem>
@@ -106,12 +107,14 @@
                                         Width="24"
                                         Height="24"
                                         HorizontalAlignment="Center"
-                                        Kind="Information" />
-                                    <TextBlock HorizontalAlignment="Center" Text="Инфо" />
+                                        Kind="Cog" />
+                                    <TextBlock HorizontalAlignment="Center" Text="Настр." />
                                 </StackPanel>
                             </TabItem.Header>
-                            <Frame Source="pack://application:,,,/View/Pages/ThanksPage.xaml" />
+                            <!--  ЧЕТВЁРТЫЙ ТАБ  -->
+                            <Frame Source="pack://application:,,,/View/Pages/InfoPage.xaml" />
                         </TabItem>
+
                     </TabControl>
                 </materialDesign:Card>
                 <!--<Grid Grid.Row="2">

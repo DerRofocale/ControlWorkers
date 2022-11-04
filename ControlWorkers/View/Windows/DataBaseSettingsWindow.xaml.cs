@@ -20,11 +20,14 @@ namespace ControlWorkers.View.Windows
     /// </summary>
     public partial class DataBaseSettingsWindow : Window
     {
+        #region VALUES
         private string _currentDBHost { get; set; }
         private string _currentDBPort { get; set; }
         private string _currentDBName { get; set; }
         private string _currentDBUser { get; set; }
         private string _currentDBPassword { get; set; }
+        #endregion
+
         public DataBaseSettingsWindow()
         {
             InitializeComponent();
@@ -40,17 +43,12 @@ namespace ControlWorkers.View.Windows
             txtPassword.Password = _currentDBPassword;
         }
 
-        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
-        {
-            base.OnMouseLeftButtonDown(e);
-            DragMove();
-        }
-
-        private void exitApp(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
-
+        #region VALIDATIONS
+        /// <summary>
+        /// ВАЛИДАЦИЯ ДЛЯ TEXTBOX
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void validateNullTxt(object sender, TextChangedEventArgs e)
         {
             if ((_currentDBHost == txtHost.Text &&
@@ -72,6 +70,11 @@ namespace ControlWorkers.View.Windows
             }
         }
 
+        /// <summary>
+        /// ВАЛИДАЦИЯ ДЛЯ PASSWORDBOX
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void validateNullPsw(object sender, RoutedEventArgs e)
         {
             if ((_currentDBHost == txtHost.Text &&
@@ -93,6 +96,50 @@ namespace ControlWorkers.View.Windows
             }
         }
 
+        /// <summary>
+        /// ВАЛИДАЦИЯ ЧИСЛОВОГО ПОРТА
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PortDistinctValidation(object sender, TextCompositionEventArgs e)
+        {
+            foreach (var ch in e.Text)
+            {
+                if (!Char.IsDigit(ch))
+                {
+                    e.Handled = true;
+                    break;
+                }
+            }
+        }
+        #endregion
+
+        #region CLICKS
+        /// <summary>
+        /// ПЕРЕМЕЩЕНИЕ ОКНА ДРОПОМ
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+        {
+            base.OnMouseLeftButtonDown(e);
+            DragMove();
+        }
+
+        /// <summary>
+        /// ЗАКРЫТИЕ ОКНА
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void exitApp(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        /// <summary>
+        /// СОХРАНЕНИЕ ПАРАМЕТРОВ В РЕЕСТРЕ
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SaveSettingsBtn(object sender, RoutedEventArgs e)
         {
             var a = Convert.ToInt32(txtPort.Text);
@@ -110,5 +157,6 @@ namespace ControlWorkers.View.Windows
 
             saveBtn.IsEnabled = false;
         }
+        #endregion
     }
 }

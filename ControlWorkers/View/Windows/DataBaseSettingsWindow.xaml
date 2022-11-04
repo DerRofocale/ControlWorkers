@@ -42,7 +42,20 @@
                     Height="100"
                     Margin="0,5,0,5"
                     Stretch="Uniform">
-                    <materialDesign:PackIcon Foreground="#FF029FEE" Kind="DatabaseCog" />
+                    <materialDesign:PackIcon Foreground="#FF029FEE">
+                        <materialDesign:PackIcon.Style>
+                            <Style TargetType="materialDesign:PackIcon">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsEnabled, ElementName=saveBtn}" Value="True">
+                                        <Setter Property="Kind" Value="DatabaseSync" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsEnabled, ElementName=saveBtn}" Value="False">
+                                        <Setter Property="Kind" Value="DatabaseCog" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </materialDesign:PackIcon.Style>
+                    </materialDesign:PackIcon>
                 </Viewbox>
                 <TextBlock
                     Margin="0,5,0,5"
@@ -73,6 +86,7 @@
                     BorderBrush="{DynamicResource MaterialDesignDivider}"
                     BorderThickness="2"
                     FontSize="18"
+                    PreviewTextInput="PortDistinctValidation"
                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
                     TextChanged="validateNullTxt" />
                 <TextBox

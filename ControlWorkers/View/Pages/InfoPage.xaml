@@ -23,6 +23,66 @@
                 <TabItem.Header>
                     <StackPanel Width="auto" Height="auto">
                         <materialDesign:PackIcon
+                            Width="42"
+                            Height="42"
+                            HorizontalAlignment="Center"
+                            Kind="Cog" />
+                    </StackPanel>
+                </TabItem.Header>
+                <ScrollViewer>
+                    <StackPanel Orientation="Vertical">
+                        <GroupBox Margin="16" Header="Системные настроки">
+                            <StackPanel>
+                                <CheckBox
+                                    x:Name="startUpWindowsCB"
+                                    Margin="0,0,0,10"
+                                    Content="Автоматический запуск с Windows" />
+                                <CheckBox
+                                    x:Name="fullScreenCB"
+                                    Margin="0,0,0,10"
+                                    Content="Запускать на полный экран" />
+                                <CheckBox
+                                    x:Name="autoExitCB"
+                                    Margin="0,0,0,10"
+                                    Content="Закрыть приложение при неактивности более 5 минут" />
+                                <CheckBox
+                                    x:Name="logOutCB"
+                                    Margin="0,0,0,0"
+                                    Content="Также выйти из аккауунта">
+                                    <CheckBox.Style>
+                                        <Style BasedOn="{StaticResource MaterialDesignCheckBox}" TargetType="CheckBox">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsChecked, ElementName=autoExitCB}" Value="True">
+                                                    <Setter Property="IsEnabled" Value="True" />
+
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding IsChecked, ElementName=autoExitCB}" Value="False">
+                                                    <Setter Property="IsEnabled" Value="False" />
+                                                    <Setter Property="IsChecked" Value="False" />
+
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </CheckBox.Style>
+                                </CheckBox>
+                            </StackPanel>
+                        </GroupBox>
+                        <GroupBox Margin="16" Header="Звук">
+                            <StackPanel>
+                                <CheckBox Margin="0,0,0,10" Content="Окно загрузки ресурсов" />
+                                <CheckBox Margin="0,0,0,10" Content="Окно авторизации" />
+                                <CheckBox Margin="0,0,0,10" Content="Открытие нового окна" />
+                                <CheckBox Margin="0,0,0,10" Content="Закрытие окна" />
+                                <CheckBox Margin="0,0,0,00" Content="Окно ошибки" />
+                            </StackPanel>
+                        </GroupBox>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Width="auto" Height="auto">
+                        <materialDesign:PackIcon
                             Width="24"
                             Height="24"
                             HorizontalAlignment="Center"
