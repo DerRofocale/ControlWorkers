@@ -41,6 +41,9 @@ namespace ControlWorkers.View.Windows
             txtDatabase.Text = _currentDBName;
             txtUsername.Text = _currentDBUser;
             txtPassword.Password = _currentDBPassword;
+
+            txtHost.Focus();
+            txtHost.SelectAll();
         }
 
         #region VALIDATIONS
@@ -51,6 +54,11 @@ namespace ControlWorkers.View.Windows
         /// <param name="e"></param>
         private void validateNullTxt(object sender, TextChangedEventArgs e)
         {
+            //txtHost.Text = txtHost.Text.Replace(" ", "");
+            //txtDatabase.Text = txtDatabase.Text.Replace(" ", "");
+            //txtPort.Text = txtPort.Text.Replace(" ", "");
+            //txtUsername.Text = txtUsername.Text.Replace(" ", "");
+
             if ((_currentDBHost == txtHost.Text &&
                 _currentDBPort == txtPort.Text &&
                 _currentDBName == txtDatabase.Text &&
@@ -77,6 +85,11 @@ namespace ControlWorkers.View.Windows
         /// <param name="e"></param>
         private void validateNullPsw(object sender, RoutedEventArgs e)
         {
+            //txtHost.Text = txtHost.Text.Replace(" ", "");
+            //txtDatabase.Text = txtDatabase.Text.Replace(" ", "");
+            //txtPort.Text = txtPort.Text.Replace(" ", "");
+            //txtUsername.Text = txtUsername.Text.Replace(" ", "");
+
             if ((_currentDBHost == txtHost.Text &&
                 _currentDBPort == txtPort.Text &&
                 _currentDBName == txtDatabase.Text &&
@@ -112,6 +125,7 @@ namespace ControlWorkers.View.Windows
                 }
             }
         }
+
         #endregion
 
         #region CLICKS
@@ -142,6 +156,12 @@ namespace ControlWorkers.View.Windows
         /// <param name="e"></param>
         private void SaveSettingsBtn(object sender, RoutedEventArgs e)
         {
+            SaveValues();
+        }
+        #endregion
+
+        private void SaveValues()
+        {
             var a = Convert.ToInt32(txtPort.Text);
             RegistryService.SetRegistryKeySettings("DBHost", txtHost.Text.ToString());
             RegistryService.SetRegistryKeySettings("DBPort", txtPort.Text.ToString());
@@ -157,6 +177,82 @@ namespace ControlWorkers.View.Windows
 
             saveBtn.IsEnabled = false;
         }
-        #endregion
+
+
+        private void ValidHostTB(object sender, TextCompositionEventArgs e)
+        {
+            foreach (var ch in e.Text)
+            {
+                if (Char.Equals(ch, ' '))
+                {
+                    e.Handled = true;
+                    break;
+                }
+            }
+        }
+
+        private void HostValidTB(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
+            else if (e.Key == Key.Enter)
+            {
+                txtPort.Focus();
+                txtPort.SelectAll();
+            }
+        }
+
+        private void PortValidTB(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
+            else if (e.Key == Key.Enter)
+            {
+                txtDatabase.Focus();
+                txtDatabase.SelectAll();
+            }
+        }
+
+        private void DatabaseValidTB(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
+            else if (e.Key == Key.Enter)
+            {
+                txtUsername.Focus();
+                txtUsername.SelectAll();
+            }
+        }
+
+        private void UserValidTB(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
+            else if (e.Key == Key.Enter)
+            {
+                txtPassword.Focus();
+                txtPassword.SelectAll();
+            }
+        }
+
+        private void PasswordValidTB(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
+            else if (e.Key == Key.Enter)
+            {
+                SaveValues();
+            }
+        }
     }
 }

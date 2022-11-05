@@ -76,6 +76,8 @@
                     BorderBrush="{DynamicResource MaterialDesignDivider}"
                     BorderThickness="2"
                     FontSize="18"
+                    MaxLength="50"
+                    PreviewKeyDown="HostValidTB"
                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
                     TextChanged="validateNullTxt" />
                 <TextBox
@@ -86,9 +88,11 @@
                     BorderBrush="{DynamicResource MaterialDesignDivider}"
                     BorderThickness="2"
                     FontSize="18"
+                    MaxLength="5"
                     PreviewTextInput="PortDistinctValidation"
                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                    TextChanged="validateNullTxt" />
+                    TextChanged="validateNullTxt" 
+                    PreviewKeyDown="PortValidTB"/>
                 <TextBox
                     x:Name="txtDatabase"
                     Width="300"
@@ -97,6 +101,8 @@
                     BorderBrush="{DynamicResource MaterialDesignDivider}"
                     BorderThickness="2"
                     FontSize="18"
+                    MaxLength="50"
+                    PreviewKeyDown="DatabaseValidTB"
                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
                     TextChanged="validateNullTxt" />
                 <TextBox
@@ -107,6 +113,8 @@
                     BorderBrush="{DynamicResource MaterialDesignDivider}"
                     BorderThickness="2"
                     FontSize="18"
+                    MaxLength="50"
+                    PreviewKeyDown="UserValidTB"
                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
                     TextChanged="validateNullTxt" />
                 <PasswordBox
@@ -117,6 +125,8 @@
                     BorderBrush="{DynamicResource MaterialDesignDivider}"
                     BorderThickness="2"
                     FontSize="18"
+                    MaxLength="50"
+                    PreviewKeyDown="PasswordValidTB"
                     PasswordChanged="validateNullPsw"
                     Style="{StaticResource MaterialDesignOutlinedPasswordBox}" />
                 <Button

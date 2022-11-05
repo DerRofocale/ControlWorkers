@@ -31,6 +31,7 @@ namespace ControlWorkers.View.Windows
         {
             Application.Current.Shutdown();
         }
+
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
         {
             base.OnMouseLeftButtonDown(e);
@@ -39,19 +40,15 @@ namespace ControlWorkers.View.Windows
 
         private void validateNullTxt(object sender, TextChangedEventArgs e)
         {
-            txtUsername.BorderBrush = new SolidColorBrush(Colors.LightGray);
-            txtPassword.BorderBrush = new SolidColorBrush(Colors.LightGray);
-            if (txtPassword.Password.Length != 0 && txtUsername.Text.Length != 0)
-            {
-                loginBtn.IsEnabled = true;
-            }
-            else
-            {
-                loginBtn.IsEnabled = false;
-            }
+            ValidationFields();
         }
 
         private void validateNullPsw(object sender, RoutedEventArgs e)
+        {
+            ValidationFields();
+        }
+
+        private void ValidationFields()
         {
             txtUsername.BorderBrush = new SolidColorBrush(Colors.LightGray);
             txtPassword.BorderBrush = new SolidColorBrush(Colors.LightGray);
@@ -64,7 +61,6 @@ namespace ControlWorkers.View.Windows
                 loginBtn.IsEnabled = false;
             }
         }
-
         private void enterBtn(object sender, RoutedEventArgs e)
         {
             Login();
