@@ -36,18 +36,21 @@
                                 <CheckBox
                                     x:Name="startUpWindowsCB"
                                     Margin="0,0,0,10"
-                                    Content="Автоматический запуск с Windows" />
+                                    Content="Автоматический запуск с Windows" Click="AutoStartUpCHBX"/>
                                 <CheckBox
                                     x:Name="fullScreenCB"
                                     Margin="0,0,0,10"
-                                    Content="Запускать на полный экран" />
+                                    Content="Запускать на полный экран" 
+                                    Click="FullScreenCHBX"/>
                                 <CheckBox
                                     x:Name="autoExitCB"
                                     Margin="0,0,0,10"
-                                    Content="Закрыть приложение при неактивности более 5 минут" />
+                                    Content="Закрыть приложение при неактивности более 5 минут"
+                                    Click="AutoCloseAppCHBX"/>
                                 <CheckBox
                                     x:Name="logOutCB"
                                     Margin="0,0,0,0"
+                                    Click="AutoLogOutCHBX"
                                     Content="Также выйти из аккауунта">
                                     <CheckBox.Style>
                                         <Style BasedOn="{StaticResource MaterialDesignCheckBox}" TargetType="CheckBox">

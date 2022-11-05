@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ControlWorkers.Services;
 
 namespace ControlWorkers.View.Pages
 {
@@ -23,6 +24,31 @@ namespace ControlWorkers.View.Pages
         public ThanksPage()
         {
             InitializeComponent();
+        }
+
+        private void AutoStartUpCHBX(object sender, RoutedEventArgs e)
+        {
+            RegistryService.SetRegistryKeySettings("AutoStartUp", startUpWindowsCB.IsChecked.Value.ToString());
+        }
+
+        private void FullScreenCHBX(object sender, RoutedEventArgs e)
+        {
+            RegistryService.SetRegistryKeySettings("StartFullScreen", fullScreenCB.IsChecked.Value.ToString());
+        }
+
+        private void AutoCloseAppCHBX(object sender, RoutedEventArgs e)
+        {
+            RegistryService.SetRegistryKeySettings("AutoCloseAppAfter5Min", autoExitCB.IsChecked.Value.ToString());
+            if (!autoExitCB.IsChecked.Value)
+            {
+                RegistryService.SetRegistryKeySettings("AutoLogOutAfter5Min", "False");
+            }
+        }
+
+        private void AutoLogOutCHBX(object sender, RoutedEventArgs e)
+        {
+            RegistryService.SetRegistryKeySettings("AutoLogOutAfter5Min", logOutCB.IsChecked.Value.ToString());
+
         }
     }
 }
