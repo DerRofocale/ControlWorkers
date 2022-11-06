@@ -49,7 +49,7 @@
                 Content="ЗАКРЫТЬ"
                 Cursor="Hand"
                 FontSize="18"
-                Style="{StaticResource MaterialDesignFlatMidBgButton}" />
+                Style="{StaticResource MaterialDesignFlatAccentBgButton}" />
             <TextBlock
                 x:Name="txtErrorMsg"
                 MaxWidth="450"

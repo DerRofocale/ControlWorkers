@@ -24,6 +24,11 @@ namespace ControlWorkers.View.Pages
         public ThanksPage()
         {
             InitializeComponent();
+            startUpWindowsCB.IsChecked = RegistryService.GetRegistryKeySettings("AutoStartUp") == "True" ? true : false;
+            fullScreenCB.IsChecked = RegistryService.GetRegistryKeySettings("StartFullScreen") == "True" ? true : false;
+            autoExitCB.IsChecked = RegistryService.GetRegistryKeySettings("AutoCloseAppAfter5Min") == "True" ? true : false;
+            logOutCB.IsChecked = RegistryService.GetRegistryKeySettings("AutoLogOutAfter5Min") == "True" ? true : false;
+
         }
 
         private void AutoStartUpCHBX(object sender, RoutedEventArgs e)

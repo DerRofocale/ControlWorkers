@@ -13,7 +13,6 @@
     MinHeight="540"
     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
     WindowStartupLocation="CenterScreen"
-    WindowState="Maximized"
     mc:Ignorable="d">
     <Grid>
         <materialDesign:Card
