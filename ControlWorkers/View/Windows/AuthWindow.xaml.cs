@@ -27,7 +27,18 @@ namespace ControlWorkers.View.Windows
         public AuthWindow()
         {
             InitializeComponent();
-            txtUsername.Focus();
+            
+            if (!String.IsNullOrEmpty(RegistryService.GetRegistryKeyUser("UserID")))
+            {
+                User? lastUser = db.Users.Where(i => i.Id == new Guid(RegistryService.GetRegistryKeyUser("UserID"))).FirstOrDefault();
+                firstNameTB.Text = $"Здравствуйте, {lastUser.FirstName}!";
+                txtUsername.Text = lastUser.Email;
+                txtPassword.Focus();
+            }
+            else
+            {
+                txtUsername.Focus();
+            }
         }
 
 

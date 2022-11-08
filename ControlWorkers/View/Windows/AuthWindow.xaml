@@ -62,11 +62,15 @@
                     <Image Source="{StaticResource workerDrawingImage}" />
                 </Viewbox>
                 <TextBlock
+                    x:Name="firstNameTB"
+                    MaxWidth="290"
                     Margin="0,25,0,5"
                     HorizontalAlignment="Center"
                     FontSize="28"
                     FontWeight="Bold"
-                    Text="Здравствуйте!" />
+                    Text="Здравствуйте!"
+                    TextAlignment="Center"
+                    TextWrapping="Wrap" />
                 <TextBlock
                     HorizontalAlignment="Center"
                     FontSize="17"
