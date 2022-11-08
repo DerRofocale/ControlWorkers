@@ -104,6 +104,7 @@ namespace ControlWorkers.View.Windows
             {
                 if (currentUser.Password.Equals(SHA256Service.ConvertToSHA256(txtPassword.Password)))
                 {
+                    RegistryService.SetRegistryKeyUser("UserID", currentUser.Id.ToString());
                     MainWindow mainWindow = new MainWindow();
                     Close();
                     mainWindow.ShowDialog();
