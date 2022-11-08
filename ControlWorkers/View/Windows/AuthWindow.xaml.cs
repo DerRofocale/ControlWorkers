@@ -8,9 +8,12 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ControlWorkers.DataBase;
+using ControlWorkers.Services;
 using MaterialDesignThemes.Wpf;
 
 namespace ControlWorkers.View.Windows
@@ -20,6 +23,7 @@ namespace ControlWorkers.View.Windows
     /// </copyright>
     public partial class AuthWindow : Window
     {
+        private readonly AppDBContext db = new AppDBContext();
         public AuthWindow()
         {
             InitializeComponent();
@@ -94,17 +98,35 @@ namespace ControlWorkers.View.Windows
 
         private void Login()
         {
-            if (txtPassword.Password == "11032003" && txtUsername.Text == "Dmitry")
+
+            User currentUser = db.Users.Where(u => u.Email.ToLower().Contains(txtUsername.Text.ToLower()) || u.PhoneNumber.Contains(txtUsername.Text)).FirstOrDefault();
+            if (currentUser != null)
             {
-                MainWindow mainWindow = new MainWindow();
-                Close();
-                mainWindow.ShowDialog();
+                MessageBox.Show("Пользователь найден");
+                if (currentUser.Password.Equals(SHA256Service.ConvertToSHA256(txtPassword.Password)))
+                {
+                    MessageBox.Show("Пароль совпадает");
+                }
+                else
+                {
+                    txtPassword.BorderBrush = new SolidColorBrush(Colors.Red);
+                }
             }
             else
             {
                 txtUsername.BorderBrush = new SolidColorBrush(Colors.Red);
-                txtPassword.BorderBrush = new SolidColorBrush(Colors.Red);
             }
+            //if (txtPassword.Password == "11032003" && txtUsername.Text == "Dmitry")
+            //{
+            //    MainWindow mainWindow = new MainWindow();
+            //    Close();
+            //    mainWindow.ShowDialog();
+            //}
+            //else
+            //{
+            //    txtUsername.BorderBrush = new SolidColorBrush(Colors.Red);
+            //    txtPassword.BorderBrush = new SolidColorBrush(Colors.Red);
+            //}
         }
 
         private void EnterLogin(object sender, KeyEventArgs e)

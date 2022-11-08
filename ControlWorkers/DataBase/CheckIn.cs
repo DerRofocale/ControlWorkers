@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace ControlWorkers.DataBase
 {
@@ -12,12 +15,18 @@ namespace ControlWorkers.DataBase
     public class CheckIn
     {
         // Код регистрации входа
+        [Required]
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+
         // Дата регистрации входа
+        [Required]
         public DateTime DateTimeRegister { get; set; }
+
         // Код вошедшего пользователя
-        public int IdUser { get; set; }
-        // Виртуальный объект пользователя
-        public virtual User User { get; set; }
+        [Required]
+        public Guid? UserId { get; set; }
+        [ForeignKey("UserId")]
+        public User User { get; set; }
     }
 }
