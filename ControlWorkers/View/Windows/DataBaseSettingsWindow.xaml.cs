@@ -15,9 +15,9 @@ using ControlWorkers.Services;
 
 namespace ControlWorkers.View.Windows
 {
-    /// <summary>
-    /// Логика взаимодействия для DataBaseSettingsWindow.xaml
-    /// </summary>
+    /// <copyright>
+    /// © Dmitry Yalchik 2022. All rights are protected by the law of the Russian Federation
+    /// </copyright>
     public partial class DataBaseSettingsWindow : Window
     {
         #region VALUES

@@ -15,9 +15,9 @@ using MaterialDesignThemes.Wpf;
 
 namespace ControlWorkers.View.Windows
 {
-    /// <summary>
-    /// Логика взаимодействия для AuthWindow.xaml
-    /// </summary>
+    /// <copyright>
+    /// © Dmitry Yalchik 2022. All rights are protected by the law of the Russian Federation
+    /// </copyright>
     public partial class AuthWindow : Window
     {
         public AuthWindow()

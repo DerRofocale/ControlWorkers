@@ -16,9 +16,9 @@ using ControlWorkers.Services;
 
 namespace ControlWorkers.View.Pages
 {
-    /// <summary>
-    /// Логика взаимодействия для ThanksPage.xaml
-    /// </summary>
+    /// <copyright>
+    /// © Dmitry Yalchik 2022. All rights are protected by the law of the Russian Federation
+    /// </copyright>
     public partial class ThanksPage : Page
     {
         public ThanksPage()

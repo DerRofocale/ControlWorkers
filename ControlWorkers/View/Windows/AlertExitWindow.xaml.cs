@@ -15,9 +15,9 @@ using System.Windows.Threading;
 
 namespace ControlWorkers.View.Windows
 {
-    /// <summary>
-    /// Логика взаимодействия для AlertExitWindow.xaml
-    /// </summary>
+    /// <copyright>
+    /// © Dmitry Yalchik 2022. All rights are protected by the law of the Russian Federation
+    /// </copyright>
     public partial class AlertExitWindow : Window
     {
         private DispatcherTimer dispatcherTimer = new DispatcherTimer();

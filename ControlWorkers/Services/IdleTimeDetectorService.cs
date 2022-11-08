@@ -7,12 +7,15 @@ using System.Threading.Tasks;
 
 namespace ControlWorkers.Services
 {
-    public static class IdleTimeDetector
+    /// <copyright>
+    /// © Dmitry Yalchik 2022. All rights are protected by the law of the Russian Federation
+    /// </copyright>
+    public static class IdleTimeDetectorService
     {
         [DllImport("user32.dll")]
         static extern bool GetLastInputInfo(ref LASTINPUTINFO plii);
 
-        public static IdleTimeInfo GetIdleTimeInfo()
+        public static IdleTimeInfoService GetIdleTimeInfo()
         {
             int systemUptime = Environment.TickCount,
                 lastInputTicks = 0,
@@ -29,7 +32,7 @@ namespace ControlWorkers.Services
                 idleTicks = systemUptime - lastInputTicks;
             }
 
-            return new IdleTimeInfo
+            return new IdleTimeInfoService
             {
                 LastInputTime = DateTime.Now.AddMilliseconds(-1 * idleTicks),
                 IdleTime = new TimeSpan(0, 0, 0, 0, idleTicks),
@@ -38,7 +41,7 @@ namespace ControlWorkers.Services
         }
     }
 
-    public class IdleTimeInfo
+    public class IdleTimeInfoService
     {
         public DateTime LastInputTime { get; internal set; }
         public TimeSpan IdleTime { get; internal set; }

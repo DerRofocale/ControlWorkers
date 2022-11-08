@@ -1,4 +1,7 @@
-﻿<Window
+﻿<!--<copyright>
+© Dmitry Yalchik 2022. All rights are protected by the law of the Russian Federation
+</copyright>-->
+<Window
     x:Class="ControlWorkers.View.Windows.DataBaseSettingsWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -89,10 +92,10 @@
                     BorderThickness="2"
                     FontSize="18"
                     MaxLength="5"
+                    PreviewKeyDown="PortValidTB"
                     PreviewTextInput="PortDistinctValidation"
                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                    TextChanged="validateNullTxt" 
-                    PreviewKeyDown="PortValidTB"/>
+                    TextChanged="validateNullTxt" />
                 <TextBox
                     x:Name="txtDatabase"
                     Width="300"
@@ -126,8 +129,8 @@
                     BorderThickness="2"
                     FontSize="18"
                     MaxLength="50"
-                    PreviewKeyDown="PasswordValidTB"
                     PasswordChanged="validateNullPsw"
+                    PreviewKeyDown="PasswordValidTB"
                     Style="{StaticResource MaterialDesignOutlinedPasswordBox}" />
                 <Button
                     x:Name="saveBtn"

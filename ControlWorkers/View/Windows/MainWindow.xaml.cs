@@ -18,9 +18,9 @@ using ControlWorkers.View.Windows;
 
 namespace ControlWorkers
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+    /// <copyright>
+    /// © Dmitry Yalchik 2022. All rights are protected by the law of the Russian Federation
+    /// </copyright>
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -41,7 +41,7 @@ namespace ControlWorkers
                     Thread.Sleep(300);
                     if (RegistryService.GetRegistryKeySettings("AutoCloseAppAfter5Min") == "True" ? true : false)
                     {
-                        var idleTime = IdleTimeDetector.GetIdleTimeInfo();
+                        var idleTime = IdleTimeDetectorService.GetIdleTimeInfo();
                         if (idleTime.IdleTime.TotalMinutes >= 5)
                         {
                             Application.Current.Dispatcher.Invoke(() =>

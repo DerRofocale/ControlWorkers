@@ -6,9 +6,14 @@ using System.Threading.Tasks;
 
 namespace ControlWorkers.DataBase
 {
+    /// <copyright>
+    /// © Dmitry Yalchik 2022. All rights are protected by the law of the Russian Federation
+    /// </copyright>
     public class Roles
     {
+        // Код роли
         public int Id { get; set; }
+        // Название роли
         public string Name { get; set; }
     }
 }

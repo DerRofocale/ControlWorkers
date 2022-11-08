@@ -1,4 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--<copyright>
+        /// © Dmitry Yalchik 2022. All rights are protected by the law of the Russian Federation
+    </copyright>-->
+    <!--  Логотип компании  -->
     <DrawingImage x:Key="workerDrawingImage">
         <DrawingImage.Drawing>
             <DrawingGroup ClipGeometry="M0,0 V880 H800.75 V0 H0 Z">
@@ -20,6 +24,7 @@
             </DrawingGroup>
         </DrawingImage.Drawing>
     </DrawingImage>
+    <!--  Логотип 90 лет ЕЭТК  -->
     <DrawingImage x:Key="logoEETKDrawingImage">
         <DrawingImage.Drawing>
             <DrawingGroup ClipGeometry="M0,0 V679.03 H868.46 V0 H0 Z">

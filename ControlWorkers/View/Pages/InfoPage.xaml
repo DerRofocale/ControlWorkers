@@ -1,4 +1,7 @@
-﻿<Page
+﻿<!--<copyright>
+© Dmitry Yalchik 2022. All rights are protected by the law of the Russian Federation
+</copyright>-->
+<Page
     x:Class="ControlWorkers.View.Pages.ThanksPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -36,17 +39,18 @@
                                 <CheckBox
                                     x:Name="startUpWindowsCB"
                                     Margin="0,0,0,10"
-                                    Content="Автоматический запуск с Windows" Click="AutoStartUpCHBX"/>
+                                    Click="AutoStartUpCHBX"
+                                    Content="Автоматический запуск с Windows" />
                                 <CheckBox
                                     x:Name="fullScreenCB"
                                     Margin="0,0,0,10"
-                                    Content="Запускать на полный экран" 
-                                    Click="FullScreenCHBX"/>
+                                    Click="FullScreenCHBX"
+                                    Content="Запускать на полный экран" />
                                 <CheckBox
                                     x:Name="autoExitCB"
                                     Margin="0,0,0,10"
-                                    Content="Закрыть приложение при неактивности более 5 минут"
-                                    Click="AutoCloseAppCHBX"/>
+                                    Click="AutoCloseAppCHBX"
+                                    Content="Закрыть приложение при неактивности более 5 минут" />
                                 <CheckBox
                                     x:Name="logOutCB"
                                     Margin="0,0,0,0"

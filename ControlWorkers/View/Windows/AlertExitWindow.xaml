@@ -1,4 +1,7 @@
-﻿<Window
+﻿<!--<copyright>
+© Dmitry Yalchik 2022. All rights are protected by the law of the Russian Federation
+</copyright>-->
+<Window
     x:Class="ControlWorkers.View.Windows.AlertExitWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
