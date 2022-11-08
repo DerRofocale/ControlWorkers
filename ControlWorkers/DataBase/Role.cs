@@ -9,7 +9,7 @@ namespace ControlWorkers.DataBase
     /// <copyright>
     /// © Dmitry Yalchik 2022. All rights are protected by the law of the Russian Federation
     /// </copyright>
-    public class Roles
+    public class Role
     {
         // Код роли
         public int Id { get; set; }

@@ -9,7 +9,7 @@ namespace ControlWorkers.DataBase
     /// <copyright>
     /// © Dmitry Yalchik 2022. All rights are protected by the law of the Russian Federation
     /// </copyright>
-    public class CheckIns
+    public class CheckIn
     {
         // Код регистрации входа
         public int Id { get; set; }
@@ -18,6 +18,6 @@ namespace ControlWorkers.DataBase
         // Код вошедшего пользователя
         public int IdUser { get; set; }
         // Виртуальный объект пользователя
-        public virtual Users User { get; set; }
+        public virtual User User { get; set; }
     }
 }

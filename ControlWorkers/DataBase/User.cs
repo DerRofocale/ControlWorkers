@@ -10,12 +10,12 @@ namespace ControlWorkers.DataBase
     /// <copyright>
     /// © Dmitry Yalchik 2022. All rights are protected by the law of the Russian Federation
     /// </copyright>
-    public class Users
+    public class User
     {
         // Код пользователя
         public Guid Id { get; set; }
         // Роль пользователя
-        public Roles Role { get; set; }
+        public Role Role { get; set; }
         // Изображение пользователя
         public byte[]? UserPic{ get; set; }
         // Имя пользователя
@@ -30,5 +30,7 @@ namespace ControlWorkers.DataBase
         public string Email { get; set; }
         // Адрес пользователя
         public string? Address { get; set; }
+        // Пароль пользователя
+        public string Password { get; set; }
     }
 }
