@@ -112,9 +112,9 @@ namespace ControlWorkers.View.Windows
         {
             DataBaseSettingsWindow dataBaseSettingsWindow = new DataBaseSettingsWindow();
             dataBaseSettingsWindow.Owner = this;
-            this.Visibility = Visibility.Hidden;
-            this.Visibility = Visibility.Visible;
+            this.Visibility = Visibility.Collapsed;
             dataBaseSettingsWindow.ShowDialog();
+            this.Visibility = Visibility.Visible;
             try
             {
                 Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;

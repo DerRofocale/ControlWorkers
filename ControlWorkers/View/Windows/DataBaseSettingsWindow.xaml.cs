@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ControlWorkers.DataBase;
 using ControlWorkers.Services;
 
 namespace ControlWorkers.View.Windows
@@ -26,6 +27,7 @@ namespace ControlWorkers.View.Windows
         private string _currentDBName { get; set; }
         private string _currentDBUser { get; set; }
         private string _currentDBPassword { get; set; }
+        private AppDBContext db;
         #endregion
 
         public DataBaseSettingsWindow()
@@ -137,6 +139,8 @@ namespace ControlWorkers.View.Windows
         {
             base.OnMouseLeftButtonDown(e);
             DragMove();
+            this.Owner.Top = this.Top;
+            this.Owner.Left = this.Left;
         }
 
         /// <summary>
@@ -147,6 +151,7 @@ namespace ControlWorkers.View.Windows
         private void exitApp(object sender, RoutedEventArgs e)
         {
             Close();
+
         }
 
         /// <summary>
@@ -162,20 +167,32 @@ namespace ControlWorkers.View.Windows
 
         private void SaveValues()
         {
-            var a = Convert.ToInt32(txtPort.Text);
-            RegistryService.SetRegistryKeySettings("DBHost", txtHost.Text.ToString());
-            RegistryService.SetRegistryKeySettings("DBPort", txtPort.Text.ToString());
-            RegistryService.SetRegistryKeySettings("DBName", txtDatabase.Text.ToString());
-            RegistryService.SetRegistryKeySettings("DBUser", txtUsername.Text.ToString());
-            RegistryService.SetRegistryKeySettings("DBPassword", txtPassword.Password.ToString());
-
-            _currentDBHost = RegistryService.GetRegistryKeySettings("DBHost");
-            _currentDBPort = RegistryService.GetRegistryKeySettings("DBPort");
-            _currentDBName = RegistryService.GetRegistryKeySettings("DBName");
-            _currentDBUser = RegistryService.GetRegistryKeySettings("DBUser");
-            _currentDBPassword = RegistryService.GetRegistryKeySettings("DBPassword");
-
-            saveBtn.IsEnabled = false;
+            try
+            {
+                Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
+                RegistryService.SetRegistryKeySettings("DBHost", txtHost.Text.ToString());
+                RegistryService.SetRegistryKeySettings("DBPort", txtPort.Text.ToString());
+                RegistryService.SetRegistryKeySettings("DBName", txtDatabase.Text.ToString());
+                RegistryService.SetRegistryKeySettings("DBUser", txtUsername.Text.ToString());
+                RegistryService.SetRegistryKeySettings("DBPassword", txtPassword.Password.ToString());
+                _currentDBHost = RegistryService.GetRegistryKeySettings("DBHost");
+                _currentDBPort = RegistryService.GetRegistryKeySettings("DBPort");
+                _currentDBName = RegistryService.GetRegistryKeySettings("DBName");
+                _currentDBUser = RegistryService.GetRegistryKeySettings("DBUser");
+                _currentDBPassword = RegistryService.GetRegistryKeySettings("DBPassword");
+                db = new AppDBContext();
+                saveBtn.IsEnabled = false;
+            }
+            catch (Exception ex)
+            {
+                Mouse.OverrideCursor = System.Windows.Input.Cursors.Arrow;
+                new ErrorWindow(ex.Message).ShowDialog();
+                Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
+            }
+            finally
+            {
+                Mouse.OverrideCursor = System.Windows.Input.Cursors.Arrow;
+            }
         }
 
 

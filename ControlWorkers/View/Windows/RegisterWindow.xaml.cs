@@ -27,6 +27,8 @@ namespace ControlWorkers.View.Windows
         {
             base.OnMouseLeftButtonDown(e);
             DragMove();
+            this.Owner.Top = this.Top;
+            this.Owner.Left = this.Left;
         }
         private void closeWindow(object sender, RoutedEventArgs e)
         {
