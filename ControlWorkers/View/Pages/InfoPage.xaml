@@ -42,6 +42,11 @@
                                     Click="AutoStartUpCHBX"
                                     Content="Автоматический запуск с Windows" />
                                 <CheckBox
+                                    x:Name="savingLastEnterCB"
+                                    Margin="0,0,0,10"
+                                    Click="savingLastEnterCHBX"
+                                    Content="Сохранить данные для входа" />
+                                <CheckBox
                                     x:Name="fullScreenCB"
                                     Margin="0,0,0,10"
                                     Click="FullScreenCHBX"
@@ -51,27 +56,7 @@
                                     Margin="0,0,0,10"
                                     Click="AutoCloseAppCHBX"
                                     Content="Закрыть приложение при неактивности более 5 минут" />
-                                <CheckBox
-                                    x:Name="logOutCB"
-                                    Margin="0,0,0,0"
-                                    Click="AutoLogOutCHBX"
-                                    Content="Также выйти из аккауунта">
-                                    <CheckBox.Style>
-                                        <Style BasedOn="{StaticResource MaterialDesignCheckBox}" TargetType="CheckBox">
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding IsChecked, ElementName=autoExitCB}" Value="True">
-                                                    <Setter Property="IsEnabled" Value="True" />
 
-                                                </DataTrigger>
-                                                <DataTrigger Binding="{Binding IsChecked, ElementName=autoExitCB}" Value="False">
-                                                    <Setter Property="IsEnabled" Value="False" />
-                                                    <Setter Property="IsChecked" Value="False" />
-
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </CheckBox.Style>
-                                </CheckBox>
                             </StackPanel>
                         </GroupBox>
                         <GroupBox Margin="16" Header="Звук">

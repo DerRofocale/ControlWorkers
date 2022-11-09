@@ -14,6 +14,7 @@
     Height="760"
     AllowsTransparency="True"
     Background="{x:Null}"
+    ContentRendered="Window_ContentRendered"
     ResizeMode="NoResize"
     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
     WindowStartupLocation="CenterScreen"

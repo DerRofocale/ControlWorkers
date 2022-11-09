@@ -27,8 +27,7 @@ namespace ControlWorkers.View.Pages
             startUpWindowsCB.IsChecked = RegistryService.GetRegistryKeySettings("AutoStartUp") == "True" ? true : false;
             fullScreenCB.IsChecked = RegistryService.GetRegistryKeySettings("StartFullScreen") == "True" ? true : false;
             autoExitCB.IsChecked = RegistryService.GetRegistryKeySettings("AutoCloseAppAfter5Min") == "True" ? true : false;
-            logOutCB.IsChecked = RegistryService.GetRegistryKeySettings("AutoLogOutAfter5Min") == "True" ? true : false;
-
+            savingLastEnterCB.IsChecked = RegistryService.GetRegistryKeySettings("SaveLastEnter") == "True" ? true : false;
         }
 
         private void AutoStartUpCHBX(object sender, RoutedEventArgs e)
@@ -50,10 +49,9 @@ namespace ControlWorkers.View.Pages
             }
         }
 
-        private void AutoLogOutCHBX(object sender, RoutedEventArgs e)
+        private void savingLastEnterCHBX(object sender, RoutedEventArgs e)
         {
-            RegistryService.SetRegistryKeySettings("AutoLogOutAfter5Min", logOutCB.IsChecked.Value.ToString());
-
+            RegistryService.SetRegistryKeySettings("SaveLastEnter", savingLastEnterCB.IsChecked.Value.ToString());
         }
     }
 }

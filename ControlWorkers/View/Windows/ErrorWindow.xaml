@@ -16,6 +16,7 @@
     Background="{x:Null}"
     ResizeMode="NoResize"
     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+    Topmost="True"
     WindowStartupLocation="CenterScreen"
     WindowStyle="None"
     mc:Ignorable="d">

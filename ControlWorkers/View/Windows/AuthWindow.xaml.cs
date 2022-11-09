@@ -23,17 +23,35 @@ namespace ControlWorkers.View.Windows
     /// </copyright>
     public partial class AuthWindow : Window
     {
-        private readonly AppDBContext db = new AppDBContext();
+        private AppDBContext db;
         public AuthWindow()
         {
             InitializeComponent();
-            
-            if (!String.IsNullOrEmpty(RegistryService.GetRegistryKeyUser("UserID")))
+
+            if (RegistryService.GetRegistryKeySettings("SaveLastEnter") == "True" ? true : false &&
+                !String.IsNullOrEmpty(RegistryService.GetRegistryKeyUser("UserID")))
             {
-                User? lastUser = db.Users.Where(i => i.Id == new Guid(RegistryService.GetRegistryKeyUser("UserID"))).FirstOrDefault();
-                firstNameTB.Text = $"Здравствуйте, {lastUser.FirstName}!";
-                txtUsername.Text = lastUser.Email;
-                txtPassword.Focus();
+                try
+                {
+                    Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
+                    db = new AppDBContext();
+
+                    User? lastUser = db.Users.Where(i => i.Id == new Guid(RegistryService.GetRegistryKeyUser("UserID"))).FirstOrDefault();
+                    firstNameTB.Text = $"Здравствуйте, {lastUser.FirstName}!";
+                    txtUsername.Text = lastUser.Email;
+                    Mouse.OverrideCursor = System.Windows.Input.Cursors.Arrow;
+                    txtPassword.Focus();
+                }
+                catch (Exception ex)
+                {
+                    Mouse.OverrideCursor = System.Windows.Input.Cursors.Arrow;
+                    new ErrorWindow(ex.Message).ShowDialog();
+                    Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
+                }
+                finally
+                {
+                    Mouse.OverrideCursor = System.Windows.Input.Cursors.Arrow;
+                }
             }
             else
             {
@@ -95,8 +113,23 @@ namespace ControlWorkers.View.Windows
             DataBaseSettingsWindow dataBaseSettingsWindow = new DataBaseSettingsWindow();
             dataBaseSettingsWindow.Owner = this;
             this.Visibility = Visibility.Hidden;
-            dataBaseSettingsWindow.ShowDialog();
             this.Visibility = Visibility.Visible;
+            dataBaseSettingsWindow.ShowDialog();
+            try
+            {
+                Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
+                db = new AppDBContext();
+            }
+            catch (Exception ex)
+            {
+                Mouse.OverrideCursor = System.Windows.Input.Cursors.Arrow;
+                new ErrorWindow(ex.Message).ShowDialog();
+                Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
+            }
+            finally
+            {
+                Mouse.OverrideCursor = System.Windows.Input.Cursors.Arrow;
+            }
         }
 
         private void GoToTheNextField(object sender, KeyEventArgs e)
@@ -110,24 +143,78 @@ namespace ControlWorkers.View.Windows
         private void Login()
         {
 
-            User currentUser = db.Users.Where(u => u.Email.ToLower().Contains(txtUsername.Text.ToLower()) || u.PhoneNumber.Contains(txtUsername.Text)).FirstOrDefault();
+            User currentUser = db.Users.Where(u => u.Email.ToLower().Equals(txtUsername.Text.ToLower()) || u.PhoneNumber.Equals(txtUsername.Text)).FirstOrDefault();
             if (currentUser != null)
             {
                 if (currentUser.Password.Equals(SHA256Service.ConvertToSHA256(txtPassword.Password)))
                 {
-                    RegistryService.SetRegistryKeyUser("UserID", currentUser.Id.ToString());
-                    MainWindow mainWindow = new MainWindow();
-                    Close();
-                    mainWindow.ShowDialog();
+                    if (currentUser.IsActivated == true)
+                    {
+                        RegistryService.SetRegistryKeyUser("UserID", currentUser.Id.ToString());
+                        MainWindow mainWindow = new MainWindow();
+                        Close();
+                        mainWindow.ShowDialog();
+                    }
+                    else
+                    {
+                        ErrorWindow erWin = new ErrorWindow("Ваш аккаунт не активирован!\nОбратитесь к системному администратору.");
+                        erWin.Owner = this;
+                        erWin.ShowDialog();
+                        try
+                        {
+                            Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
+                            db = new AppDBContext();
+                        }
+                        catch (Exception ex)
+                        {
+                            Mouse.OverrideCursor = System.Windows.Input.Cursors.Arrow;
+                            new ErrorWindow(ex.Message).ShowDialog();
+                            Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
+                        }
+                        finally
+                        {
+                            Mouse.OverrideCursor = System.Windows.Input.Cursors.Arrow;
+                        }
+                    }
                 }
                 else
                 {
                     txtPassword.BorderBrush = new SolidColorBrush(Colors.Red);
+                    try
+                    {
+                        Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
+                        db = new AppDBContext();
+                    }
+                    catch (Exception ex)
+                    {
+                        Mouse.OverrideCursor = System.Windows.Input.Cursors.Arrow;
+                        new ErrorWindow(ex.Message).ShowDialog();
+                        Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
+                    }
+                    finally
+                    {
+                        Mouse.OverrideCursor = System.Windows.Input.Cursors.Arrow;
+                    }
                 }
             }
             else
             {
                 txtUsername.BorderBrush = new SolidColorBrush(Colors.Red);
+                try
+                {
+                    Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
+                    db = new AppDBContext();
+                }
+                catch (Exception ex)
+                {
+                    Mouse.OverrideCursor = System.Windows.Input.Cursors.Arrow;
+                    new ErrorWindow(ex.Message).ShowDialog();
+                    Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
+                }
+                finally
+                {
+                    Mouse.OverrideCursor = System.Windows.Input.Cursors.Arrow;
+                }
             }
         }
 
@@ -138,6 +225,25 @@ namespace ControlWorkers.View.Windows
                 Login();
             }
             
+        }
+
+        private void Window_ContentRendered(object sender, EventArgs e)
+        {
+            try
+            {
+                Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
+                db = new AppDBContext();
+            }
+            catch (Exception ex)
+            {
+                Mouse.OverrideCursor = System.Windows.Input.Cursors.Arrow;
+                new ErrorWindow(ex.Message).ShowDialog();
+                Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
+            }
+            finally
+            {
+                Mouse.OverrideCursor = System.Windows.Input.Cursors.Arrow;
+            }
         }
     }
 }
