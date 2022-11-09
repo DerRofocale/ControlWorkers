@@ -39,15 +39,11 @@
                         VerticalAlignment="Center"
                         Orientation="Horizontal">
                         <TextBlock
+                            x:Name="userNameTB"
                             FontSize="15"
                             FontWeight="SemiBold"
                             Foreground="White"
-                            Text="Здравствуйте, " />
-                        <TextBlock
-                            FontSize="15"
-                            FontWeight="SemiBold"
-                            Foreground="White"
-                            Text="Дмитрий Иванович!" />
+                            Text="Здравствуйте!" />
                     </StackPanel>
                 </Border>
                 <materialDesign:Card Grid.Row="1">

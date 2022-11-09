@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ControlWorkers.DataBase;
 using ControlWorkers.Services;
 using ControlWorkers.View.Windows;
 
@@ -23,9 +24,31 @@ namespace ControlWorkers
     /// </copyright>
     public partial class MainWindow : Window
     {
+        private AppDBContext db;
         public MainWindow()
         {
             InitializeComponent();
+
+            try
+            {
+                Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
+                db = new AppDBContext();
+
+                User? currentUser = db.Users.Where(i => i.Id == new Guid(RegistryService.GetRegistryKeyUser("UserID"))).FirstOrDefault();
+                userNameTB.Text = $"Здравствуйте, {currentUser.FirstName}!";
+                Mouse.OverrideCursor = System.Windows.Input.Cursors.Arrow;
+            }
+            catch (Exception ex)
+            {
+                Mouse.OverrideCursor = System.Windows.Input.Cursors.Arrow;
+                new ErrorWindow(ex.Message).ShowDialog();
+                Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
+            }
+            finally
+            {
+                Mouse.OverrideCursor = System.Windows.Input.Cursors.Arrow;
+            }
+
             if (RegistryService.GetRegistryKeySettings("StartFullScreen") == "True")
             {
                 this.WindowState = WindowState.Maximized;
@@ -52,6 +75,10 @@ namespace ControlWorkers
                     }
                 }
             });
+            if (!String.IsNullOrEmpty(RegistryService.GetRegistryKeyUser("UserID")))
+            {
+
+            }
         }
     }
 }
