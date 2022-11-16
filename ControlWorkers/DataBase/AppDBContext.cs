@@ -30,7 +30,6 @@ namespace ControlWorkers.DataBase
         /// </summary>
         public AppDBContext()
         {
-            Database.EnsureCreated();
 
             if (this.Users.Count() == 0 && this.Roles.Count() == 0)
             {
@@ -39,9 +38,10 @@ namespace ControlWorkers.DataBase
 
                 var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 
-                
 
-                User adminUser = new User() {
+
+                User adminUser = new User()
+                {
                     Id = Guid.NewGuid(),
                     FirstName = "Дмитрий",
                     MiddleName = "Иванович",

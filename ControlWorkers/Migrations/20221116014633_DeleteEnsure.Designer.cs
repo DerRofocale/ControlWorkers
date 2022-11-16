@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ControlWorkers.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20221108230632_Done")]
-    partial class Done
+    [Migration("20221116014633_DeleteEnsure")]
+    partial class DeleteEnsure
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -6,7 +6,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace ControlWorkers.Migrations
 {
-    public partial class Done : Migration
+    public partial class DeleteEnsure : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
