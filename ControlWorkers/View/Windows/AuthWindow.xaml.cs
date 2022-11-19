@@ -37,10 +37,13 @@ namespace ControlWorkers.View.Windows
                     db = new AppDBContext();
 
                     User? lastUser = db.Users.Where(i => i.Id == new Guid(RegistryService.GetRegistryKeyUser("UserID"))).FirstOrDefault();
-                    firstNameTB.Text = $"Здравствуйте, {lastUser.FirstName}!";
-                    txtUsername.Text = lastUser.Email;
-                    Mouse.OverrideCursor = System.Windows.Input.Cursors.Arrow;
-                    txtPassword.Focus();
+                    if (lastUser != null)
+                    {
+                        firstNameTB.Text = $"Здравствуйте, {lastUser.FirstName}!";
+                        txtUsername.Text = lastUser.Email;
+                        Mouse.OverrideCursor = System.Windows.Input.Cursors.Arrow;
+                        txtPassword.Focus();
+                    }
                 }
                 catch (Exception ex)
                 {
