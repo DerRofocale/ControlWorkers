@@ -35,7 +35,10 @@ namespace ControlWorkers
                 db = new AppDBContext();
 
                 User? currentUser = db.Users.Where(i => i.Id == new Guid(RegistryService.GetRegistryKeyUser("UserID"))).FirstOrDefault();
-                userNameTB.Text = $"Здравствуйте, {currentUser.FirstName}!";
+                if (currentUser != null)
+                {
+                    userNameTB.Text = $"Здравствуйте, {currentUser.FirstName}!";
+                }
                 Mouse.OverrideCursor = System.Windows.Input.Cursors.Arrow;
             }
             catch (Exception ex)
@@ -79,6 +82,28 @@ namespace ControlWorkers
             {
 
             }
+        }
+
+        private void PagesRotate(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                Mouse.OverrideCursor = System.Windows.Input.Cursors.Arrow;
+                db = new AppDBContext();
+                EmployeesDG.ItemsSource = db.Users.ToList();
+                Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
+            }
+            catch (Exception)
+            { }
+            finally
+            {
+                Mouse.OverrideCursor = System.Windows.Input.Cursors.Arrow;
+            }
+        }
+
+        private void AddNewUserDBTClick(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("AddNew");
         }
     }
 }

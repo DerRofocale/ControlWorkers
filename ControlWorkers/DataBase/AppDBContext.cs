@@ -30,13 +30,12 @@ namespace ControlWorkers.DataBase
         /// </summary>
         public AppDBContext()
         {
-
             if (this.Users.Count() == 0 && this.Roles.Count() == 0)
             {
                 Role adminRole = new Role() { Name = "Администратор" };
                 this.Roles.Add(adminRole);
 
-                var assembly = System.Reflection.Assembly.GetExecutingAssembly();
+                //var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 
 
 

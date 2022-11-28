@@ -88,6 +88,7 @@
                     KeyDown="GoToTheNextField"
                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
                     TextChanged="validateNullTxt" />
+
                 <PasswordBox
                     x:Name="txtPassword"
                     Width="300"
